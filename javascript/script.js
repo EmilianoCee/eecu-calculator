@@ -1,11 +1,17 @@
 const jobTemplate = document.getElementById("job-template");
 const jobList = document.getElementById("job-list");
+const sortTriangles = document.getElementsByClassName("triangle");
+
+console.log(sortTriangles)
 
 const jobs = [
     {work: "Accountant", income: 50000}, 
     {work: "nothing", income: 2400}, 
     {work: "homeless", income: 24}, 
-    {work: "car", income: -50}
+    {work: "car", income: -50},
+    {work: "chair", income: 70},
+    {work: "josh", income: 3},
+    {work: "student", income: -4}
 ]
 
 // adds and clones job information into HTML template tag
@@ -23,7 +29,9 @@ for (let i = 0; i < jobs.length; i++) {
     jobList.append(job);
 }
 
-// jobs.forEach(work => {
-//     jobName.textContent = jobs.work;
-//     jobIncome.textContent = jobs.income;
-// })
+// function triangleRight() {
+//     const element = document.getElementById("tri")
+// }
+
+
+// sortTriangles.addEventListener('click'), (MouseEvent) => {}

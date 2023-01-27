@@ -59,14 +59,14 @@ input {
 
 #job-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
 }
 
 .job {
     display: flex;
     justify-content: space-between;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     padding: .5rem;
 }
 
@@ -74,6 +74,83 @@ input {
     display: none;
 }
 
-/* .job:nth-child(2n+1) {
+.job:nth-child(2n) {
     font-weight: bold;
+}
+
+/* .job:nth-child(3n+2) {
+    font-weight: bold;
+    color: rgb(179, 255, 132);
 } */
+
+.job-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: darkgray;
+    padding: .5rem;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    border: 1px green solid;
+    background-color: white;
+}
+
+.searchbar input {
+    margin-right: .5rem;
+    border: 0;
+    height: 100%;
+}
+
+.searchbar input::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+.searchbar img{ 
+    height: 16px;
+    margin-right: .5rem;
+}
+
+.job-sort {
+    display: flex;
+    align-items: center;
+}
+
+.job-sort p {
+    margin: 0;
+}
+
+.job-sort label {
+    margin: .5rem 0;
+}
+
+.job-sort input {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.triangle {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.triangle-up {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 9px solid white;
+    border-radius: 0px;
+}
+
+.triangle-right {
+    border-left: 9px solid white;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+}
+
+.triangle-down {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 9px solid white;
+}

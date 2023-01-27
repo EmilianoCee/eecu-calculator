@@ -26,23 +26,40 @@
                 <h2>Career Options</h2>
                 <h3>Career Sort</h3>
                 <div class="job-nav">
-                    <div id="name-sort">Name</div>
-                    <div id="income-sort">Income</div>
-                    <input type="search" id="search">
+                    <div class="job-sort" id="name-sort">
+                        <label for="name-radio">Name</label>
+                        <input type="radio" id="name-radio" name="sort">
+                    </div>
+                    <div class="job-sort" id="income-sort">
+                        <label for="income-radio">Income 
+                            <input type="radio" id="income-radio" name="sort"> 
+                            <span class="triangle-up triangle"></span>
+                        </label>
+                        
+                        <!-- <p>Income</p>
+                        <div class="triangle-down triangle" id="income-traingle"></div> -->
+                    </div>
+                    <div class="searchbar">
+                        <input type="search" id="search">
+                        <img class="search-icon" src="/images/search-glass.png" alt="">
+                    </div>
+                    
                 </div>
 
                 <div id="job-list">
                     <template id="job-template">
                         <div class="job">
-                            <p job-name>gew</p>
+                            <p job-name></p>
                             <p job-income></p>
                         </div>
                     </template>
                 </div>
             </section>
+        
 
             <section class="career-taxes half">
+                
             </section>
-
+        </article>
 </body>
 </html>
