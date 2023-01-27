@@ -6,41 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EECU Calculator</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/javascript/script.js" defer></script>
 </head>
 <body>
     <div class="hero">
         <div class="hero-circle">
+            <img src="/images/logo.png" alt="">
             <h1>WISE UP!</h1>
         </div>
     </div>
-    <div class="content">
-        <section class="welcome">
+
+        <section class="welcome shadow">
             <h2>WELCOME</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis cupiditate provident debitis repellat sit sed, placeat magnam cum repudiandae laborum molestias eaque assumenda. Magni impedit velit architecto illum, reiciendis soluta.</p>
         </section>
 
-        <article class="career-tax">
-            <section class="career-options">
+        <article class="career-tax shadow">
+            <section class="career-options half">
                 <h2>Career Options</h2>
                 <h3>Career Sort</h3>
                 <div class="job-nav">
                     <div id="name-sort">Name</div>
                     <div id="income-sort">Income</div>
-                    <div id="job-search"></div>
+                    <input type="search" id="search">
                 </div>
 
-                <div class="job-list">
-                    <template class="job" id="job">
-                        <p id="job-name">Accountant</p>
-                        <p id="job-income">$55,650.00</p>
+                <div id="job-list">
+                    <template id="job-template">
+                        <div class="job">
+                            <p job-name>gew</p>
+                            <p job-income></p>
+                        </div>
                     </template>
                 </div>
             </section>
 
-            <section class="career-taxes">
-
+            <section class="career-taxes half">
             </section>
-        </article>
-    </div>
+
 </body>
 </html>

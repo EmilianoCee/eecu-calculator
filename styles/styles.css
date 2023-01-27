@@ -13,12 +13,67 @@ body {
 }
 
 .hero-circle {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     border-radius: 50%;
     color: #0A5BA8;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.hero-circle img {
+    width: 200px;
+}
+
+.shadow {
+    box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.25);
 }
 
 .welcome {
     background-color: white;
     margin: 0 50px;
 }
+
+input {
+    font-size: 1rem;
+}
+
+.career-tax {
+    margin: 0 50px;
+    background-color: white;
+    display: flex;
+}
+
+.career-options {
+    border: 1px solid red;
+}
+
+.half {
+    width: 50%;
+    padding: 16px;
+}
+
+#job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.job {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid grey;
+    padding: .5rem;
+}
+
+.hide {
+    display: none;
+}
+
+/* .job:nth-child(2n+1) {
+    font-weight: bold;
+} */
