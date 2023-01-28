@@ -1,5 +1,7 @@
 const jobTemplate = document.getElementById("job-template");
 const jobList = document.getElementById("job-list");
+
+const sortButtons = document.getElementsByClassName("job-sort")
 const sortTriangles = document.getElementsByClassName("triangle");
 
 console.log(sortTriangles)
@@ -22,16 +24,36 @@ for (let i = 0; i < jobs.length; i++) {
     // target with querySelector due to getElementById errors
     const jobName = job.querySelector("[job-name]");
     const jobIncome = job.querySelector("[job-income]");
-    console.log(element.work);
-    console.log(element.income);
     jobName.textContent = element.work;
     jobIncome.textContent = element.income;
     jobList.append(job);
 }
 
-// function triangleRight() {
-//     const element = document.getElementById("tri")
-// }
+for (let i = 0; i < sortButtons.length; i++) {
+    sortButtons[i].addEventListener("mouseover", function() {
+        const innerTriangle = this.children[1].classList;
+        if (innerTriangle.contains("triangle-right")) {
+            innerTriangle.remove("triangle-right");
+            innerTriangle.add("triangle-left");
+        }
+    }) 
+    sortButtons[i].addEventListener("mouseout", function() {
+        const innerTriangle = this.children[1].classList;
+        if (innerTriangle.contains("triangle-left")) {
+            innerTriangle.remove("triangle-left");
+            innerTriangle.add("triangle-right");
+        }
+    }) 
 
-
-// sortTriangles.addEventListener('click'), (MouseEvent) => {}
+    sortButtons[i].addEventListener("click", function() {
+        const innerTriangle = this.children[1].classList;
+        if (innerTriangle.contains("triangle-left") || innerTriangle.contains("triangle-down")) {
+            innerTriangle.remove("triangle-left");
+            innerTriangle.remove("triangle-down");
+            innerTriangle.add("triangle-up");
+        } else if (innerTriangle.contains("triangle-up")) {
+            innerTriangle.remove("triangle-up");
+            innerTriangle.add("triangle-down");
+        }
+    }) 
+}
