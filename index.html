@@ -10,32 +10,27 @@
 </head>
 <body>
     <div class="hero">
-        <div class="hero-circle">
-            <img src="/images/logo.png" alt="">
+        <div class="hero-circle shadow">
+            <img src="/images/wiseup-logo.jpg" alt="">
             <h1>WISE UP!</h1>
+            <p>EECU Budgeting Calculator</p>
         </div>
     </div>
 
-        <section class="welcome shadow">
-            <h2>WELCOME</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis cupiditate provident debitis repellat sit sed, placeat magnam cum repudiandae laborum molestias eaque assumenda. Magni impedit velit architecto illum, reiciendis soluta.</p>
-        </section>
-
-        <article class="career-tax shadow">
-            <section class="career-options half">
+        <article class="career-tax">
+            <section class="career-options shadow">
                 <h2>Career Options</h2>
-                <h3>Career Sort</h3>
                 <div class="job-nav">
                     <div class="job-sort" id="name-sort" >
                         <p>Name</p>
-                        <div class="triangle-right triangle" id="name-traingle"></div>
+                        <div class="triangle-up triangle" id="name-traingle"></div>
                     </div>
                     <div class="job-sort" id="income-sort">
                         <p>Income</p>
                         <div class="triangle-right triangle" id="income-traingle"></div>
                     </div>
                     <div class="searchbar">
-                        <input type="search" id="search">
+                        <input type="search" id="search" placeholder="Search...">
                         <img class="search-icon" src="/images/search-glass.png" alt="">
                     </div>
                     
@@ -51,10 +46,21 @@
                 </div>
             </section>
         
+            <div class="career-taxes">
+                <section class="career-info shadow">
+                    <h2>Career Information</h2>
+                    <p id="info-job">Select a career from the given options.</p>
+                    <p id="gross-annual">Gross Annual Income: </p>
+                    <p id="gross-monthly">Gross Monthly Income: </p>
+                </section>
 
-            <section class="career-taxes half">
-                
-            </section>
+                <div class="calculations shadow">
+                    <div class="calculator">
+                        <div class="screen"></div>
+                        <div class="numpad"></div>
+                    </div>
+                </div>
+            </div>
         </article>
 </body>
 </html>
