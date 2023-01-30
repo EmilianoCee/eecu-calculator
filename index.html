@@ -17,7 +17,7 @@
         </div>
     </div>
 
-        <article class="career-tax">
+        <article class="career">
             <section class="career-options shadow">
                 <h2>Career Options</h2>
                 <div class="job-nav">
@@ -52,15 +52,244 @@
                     <p id="info-job">Select a career from the given options.</p>
                     <p id="gross-annual">Gross Annual Income: </p>
                     <p id="gross-monthly">Gross Monthly Income: </p>
+                    <button id="test">TEST BUTTON</button>
                 </section>
 
-                <div class="calculations shadow">
-                    <div class="calculator">
-                        <div class="screen"></div>
-                        <div class="numpad"></div>
+                <section class="calculations shadow">
+                    <h2>Pay Deduction</h2>
+                    <div class="calculator shadow ">
+                        <div class="screen">
+                            <p>0</p>
+                        </div>
+                        <div class="numpad">
+                            <div class="calc-row">
+                                <div class="calc-button" id="clear">C</div>
+                                <div class="calc-button">&#43;/&#8722;</div>
+                                <div class="calc-button" id="percent">%</div>
+                                <div class="calc-button">&#247;</div>
+                            </div>
+                            <div class="calc-row">
+                                <div class="calc-button" id="7">7</div>
+                                <div class="calc-button" id="8">8</div>
+                                <div class="calc-button" id="9">9</div>
+                                <div class="calc-button" id="times">&#215;</div>
+                            </div>
+                            <div class="calc-row">
+                                <div class="calc-button" id="4">4</div>
+                                <div class="calc-button" id="5">5</div>
+                                <div class="calc-button" id="6">6</div>
+                                <div class="calc-button" >&#8722;</div>
+                            </div>
+                            <div class="calc-row">
+                                <div class="calc-button" id="1">1</div>
+                                <div class="calc-button" id="2">2</div>
+                                <div class="calc-button" id="3">3</div>
+                                <div class="calc-button">&#43;</div>
+                            </div>
+                            <div class="calc-row">
+                                <div class="calc-button" id="0">0</div>
+                                <div class="calc-button" id="dot">.</div>
+                                <div class="calc-button" id="equals">&#61;</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+
+                <section class="tax-receipt shadow">
+                    <h2>Deduction Receipt</h2>
+                    <div class="tax-deduction">
+                        <table class="receipt">
+                            <tr>
+                                <td>Federal Taxes:</td>
+                                <td>12%</td>
+                                <td>&#215;</td>
+                                <td>0.12</td>
+                                <td>=</td>
+                                <td id="federal-tax"></td>
+                            </tr>
+                            <tr>
+                                <td>State Taxes:</td>
+                                <td>7%</td>
+                                <td>&#215;</td>
+                                <td>0.07</td>
+                                <td>=</td>
+                                <td id="state-tax"></td>
+                            </tr>
+                            <tr>
+                                <td>Social Security:</td>
+                                <td>6.2%</td>
+                                <td>&#215;</td>
+                                <td>0.062</td>
+                                <td>=</td>
+                                <td id="social-security"></td>
+                            </tr>
+                            <tr>
+                                <td>Medicare:</td>
+                                <td>1.45%</td>
+                                <td>&#215;</td>
+                                <td>0.0145</td>
+                                <td>=</td>
+                                <td id="medicare"></td>
+                            </tr>
+                            <tr>
+                                <td>State Disability:</td>
+                                <td>1%</td>
+                                <td>&#215;</td>
+                                <td>0.01</td>
+                                <td>=</td>
+                                <td id="disability"></td>
+                            </tr>
+                            <tr>
+                                <td>Retirement Investment:</td>
+                                <td>5%</td>
+                                <td>&#215;</td>
+                                <td>0.05</td>
+                                <td>=</td>
+                                <td id="retirement"></td>
+                            </tr>
+                            <tr>
+                                <td>Medical Insurance:</td>
+                                <td></td>
+                                <td></td>
+                                <td>$180</td>
+                                <td>=</td>
+                                <td id="medical"></td>
+                            </tr>
+                            <tr>
+                                <td>Total Deductions:</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>=</td>
+                                <td id="total-deduction"></td>
+                            </tr>
+                        </table>
+                        <table class="net-month">
+                            <tr>
+                                <td id="table-monthly"></td>
+                                <td>-</td>
+                                <td id="table-deductions"></td>
+                                <td>=</td>
+                                <td id="table-net"></td>
+                            </tr>
+                            <tr>
+                                <td>Gross Monthly Income</td>
+                                <td>-</td>
+                                <td>Total Deductions</td>
+                                <td>=</td>
+                                <td>Net Monthly Income</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="household">
+                    <h2>Monthly House Payment</h2>
+                    <div class="house-calculation">
+                        <p>Gross Monthly Income &#215; 33% (0.33) = <br>
+                        Maximum Monthly House Payment</p>
+                        <p id="house-pay"></p>
+                    </div>
+                </section>
             </div>
+        </article>
+
+        <article class="check">
+            <section class="check-section shadow">
+                <h2>Check Register</h2>
+                <table class="check-table shadow">
+                    <tr>
+                        <td>NUMBER OR CODE</td>
+                        <td>DATE</td>
+                        <td>TRANSACTION DESCRIPTION</td>
+                        <td>PAYMENT, FEE WITHDRAWAL (-)</td>
+                        <td></td>
+                        <td>DEPOSIT CREDIT (+)</td>
+                        <td>BALANCE ($)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </section>
         </article>
 </body>
 </html>
