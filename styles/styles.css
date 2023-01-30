@@ -81,7 +81,7 @@ h2 {
 .calculations {
     display: flex;
     flex-wrap: wrap;
-    /* display: none; */
+    display: none;
 }
 
 .calculator {
@@ -190,6 +190,10 @@ td {
     border: 1px solid grey;
     padding: 0 16px;
     align-items: center;
+}
+
+.job p:first-child {
+    padding-right: 8px;
 }
 
 .job:hover {
