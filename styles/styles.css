@@ -82,7 +82,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    display: none;
+    /* display: none; */
 }
 
 .calc-header {
@@ -207,6 +207,8 @@ td {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+    padding: 16px;
+    overflow-y: auto;
 }
 
 .job {

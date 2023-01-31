@@ -1,3 +1,4 @@
+
 const jobTemplate = document.getElementById("job-template");
 const jobList = document.getElementById("job-list");
 
@@ -27,6 +28,9 @@ const tableDeduction = document.getElementById("table-deductions");
 const tableNet = document.getElementById("table-net");
 
 const searchInput = document.getElementById("search");
+
+const careerTaxContent = document.getElementById("career-taxes");
+const careerOptions = document.getElementById("career-options");
 
 const jobs = [
     {work: "Accountant", income: 55650}, 
@@ -99,6 +103,7 @@ const jobs = [
     {work: "Welder / Metal Specialist", income: 47250},
     {work: "Wind Energy Technician", income: 56700},
 ]
+
 
 populateTemplates();
 
@@ -273,19 +278,44 @@ function sort(which, direction) {
     }
 }
 
-function testing(param) {
-    if (param == "income-sort") {
-        console.log("wooo")
-    } else {
-        console.log("lame function")
-    }
-    console.log("i made it through, no thanks to:" , param);
-}
-
+let totalHeight = 0;
+console.log("before button:" + totalHeight)
+console.log("before button:" + totalHeight)
 const testButton = document.getElementById("test");
 testButton.addEventListener("click", function() {
-    testing(sortButtons[1].id);
-})
+    for (let i = 0; i < careerTaxContent.children.length; i++) {
+        const element = careerTaxContent.children[i];
+        let height = element.offsetHeight;
+        console.log(element);
+        console.log(height);
+        totalHeight = totalHeight + height;
+        
+    }
+    console.log("after button:" + totalHeight);
+    console.log(careerOptions.style.height);
+    careerOptions.style.height = totalHeight + 65 + "px";
+    jobList.style.height = totalHeight - 100 + "px";
+});
+
+function setEqualHeight() {
+    for (let i = 0; i < careerTaxContent.children.length; i++) {
+        const element = careerTaxContent.children[i];
+        let height = element.offsetHeight;
+        console.log(element);
+        console.log(height);
+        totalHeight = totalHeight + height;
+    }
+    console.log("after button:" + totalHeight);
+    console.log(careerOptions.style.height);
+    careerOptions.style.height = totalHeight + 65 + "px";
+    jobList.style.height = totalHeight - 100 + "px";
+}
+
+setEqualHeight()
+// window.addEventListener("resize", setEqualHeight());
+
+
+
 
 // jobs.sort(function(a, b) {
 //     let nameA = a.work.toLowerCase();
