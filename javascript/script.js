@@ -197,7 +197,7 @@ for (let i = 0; i < displayedJobs.length; i++) {
         tableDeduction.innerText = totalDeduction.innerText;
         tableNet.innerText = "$" + parseFloat(netMonthly).toFixed(2);
 
-        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" +parseFloat(monthIncome*0.33).toFixed(2)
+        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2)
     })
 }};
 
@@ -298,3 +298,5 @@ testButton.addEventListener("click", function() {
 //     }
 //     return 0;
 // })
+
+// calculator stuffs
