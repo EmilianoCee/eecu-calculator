@@ -138,21 +138,13 @@ for (let i = 0; i < sortButtons.length; i++) {
         const innerTriangle = this.children[1].classList;
         if (innerTriangle.contains("triangle-left") || innerTriangle.contains("triangle-down")) {
             resetTriangles();
-            if (this.id == incomeSort.id) {
-                sortIncomeU();
-            } else {
-                sortNameDown();
-            }
+            sort(this.id, 1);
             innerTriangle.remove("triangle-right");
             innerTriangle.add("triangle-up");
 
         } else if (innerTriangle.contains("triangle-up")) {
             resetTriangles();
-            if (this.id == incomeSort.id) {
-                sortIncome();
-            } else {
-                sortNameUp();
-            }
+            sort(this.id, 2);
             innerTriangle.remove("triangle-right");
             innerTriangle.add("triangle-down");
         } else {
@@ -170,17 +162,6 @@ function resetTriangles() {
         element.add("triangle-right");
     }
 }
-
-let toggle = true;
-nameSort.addEventListener("click", function() {
-    if (!toggle) {
-        sortNameUp();
-    } else {
-        sortNameDown();
-    }
-    toggle = !toggle;
-})
-
 
 function clickableJobs() {
 for (let i = 0; i < displayedJobs.length; i++) {
@@ -215,15 +196,17 @@ for (let i = 0; i < displayedJobs.length; i++) {
         tableMonthly.innerText = "$" + parseFloat(monthIncome).toFixed(2) ;
         tableDeduction.innerText = totalDeduction.innerText;
         tableNet.innerText = "$" + parseFloat(netMonthly).toFixed(2);
+
+        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" +parseFloat(monthIncome*0.33).toFixed(2)
     })
 }};
 
-function sortIncome() {
+function sortIncomeReverse() {
     jobs.sort((a, b) => a.income - b.income)
     removeTemplates()
     populateTemplates()
 }
-function sortIncomeU() {
+function sortIncome() {
     jobs.sort((b, a) => a.income - b.income)
     removeTemplates()
     populateTemplates()
@@ -237,12 +220,6 @@ function removeTemplates() {
         }
     }
 }
-
-const testButton = document.getElementById("test");
-testButton.addEventListener("click", function() {
-    console.log(sortButtons[1].id == incomeSort.id);
-    sortNameDown();
-})
 
 function sortNameDown() {
     jobs.sort(function(a, b) {
@@ -279,6 +256,36 @@ function sortNameUp() {
         populateTemplates()
     })
 }
+
+function sort(which, direction) {
+    if (which == "income-sort") {
+        if (direction == 1) {
+            sortIncome();
+        } else {
+            sortIncomeReverse()
+        }
+    } else {
+        if (direction == 1) {
+            sortNameUp();
+        } else {
+            sortNameDown();
+        }
+    }
+}
+
+function testing(param) {
+    if (param == "income-sort") {
+        console.log("wooo")
+    } else {
+        console.log("lame function")
+    }
+    console.log("i made it through, no thanks to:" , param);
+}
+
+const testButton = document.getElementById("test");
+testButton.addEventListener("click", function() {
+    testing(sortButtons[1].id);
+})
 
 // jobs.sort(function(a, b) {
 //     let nameA = a.work.toLowerCase();
