@@ -50,6 +50,10 @@ input {
     font-size: 1rem;
 }
 
+input:focus {
+    outline: none;
+}
+
 section {
     padding: 16px;
     border-top: 6px solid #0A5BA8;
@@ -209,6 +213,7 @@ td {
     gap: 16px;
     padding: 16px;
     overflow-y: auto;
+    border-top: 1px solid gray;
 }
 
 .job {
@@ -232,9 +237,9 @@ td {
     display: none;
 }
 
-/* .job:nth-child(2n) {
+.job:nth-child(2n) {
     font-weight: bold;
-} */
+}
 
 .job-nav {
     display: flex;
@@ -290,6 +295,17 @@ td {
     width: 100%;
 }
 
+.check-section h2{
+    width: 50%;
+}
+
+.table-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .check-table {
     width: 100%;
     background-color: black;
@@ -298,6 +314,26 @@ td {
 .check-table tr{
     background-color: white;
     text-align: center;
+    height: 50px;
+}
+
+.check-table tr td input {
+    height: 32px;
+    width: 80%;
+    border: 0;
+    padding: 16px;
+}
+
+.check-table tr td {
+    padding: 0;
+}
+
+.check-table tr td:nth-child(2) {
+    font-weight: bold;
+}
+
+.top-row {
+    position: sticky;
 }
 
 .triangle {
@@ -327,4 +363,8 @@ td {
     border-right: 5px solid transparent;
     border-bottom: 9px solid black;
     border-radius: 0px;
+}
+
+.cross {
+    color: #03498b;
 }

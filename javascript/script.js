@@ -21,7 +21,6 @@ const disability = document.getElementById("disability");
 const retirement = document.getElementById("retirement");
 const totalDeduction = document.getElementById("total-deduction");
 const housePayment = document.getElementById("house-pay");
-const medical = document.getElementById("medical");
 
 const tableMonthly = document.getElementById("table-monthly");
 const tableDeduction = document.getElementById("table-deductions");
@@ -31,6 +30,8 @@ const searchInput = document.getElementById("search");
 
 const careerTaxContent = document.getElementById("career-taxes");
 const careerOptions = document.getElementById("career-options");
+
+const currentBalance = document.getElementById("current");
 
 const jobs = [
     {work: "Accountant", income: 55650}, 
@@ -50,7 +51,7 @@ const jobs = [
     {work: "Commercial Driver ", income: 51450},
     {work: "Computer Technician", income: 46200},
     {work: "Conserv. / Environ. Science", income: 72450},
-    {work: "Corectional Officer", income: 48300},
+    {work: "Correctional Officer", income: 48300},
     {work: "Cosmetologist", income: 36750},
     {work: "Credit Union / Bank Manager", income:61950},
     {work: "Daycare Director", income: 37800},
@@ -103,7 +104,6 @@ const jobs = [
     {work: "Welder / Metal Specialist", income: 47250},
     {work: "Wind Energy Technician", income: 56700},
 ]
-
 
 populateTemplates();
 
@@ -195,14 +195,16 @@ for (let i = 0; i < displayedJobs.length; i++) {
         medicare.innerText = "$" +  parseFloat(medi).toFixed(2);
         disability.innerText = "$" +  parseFloat(dis).toFixed(2);
         retirement.innerText = "$" +  parseFloat(ret).toFixed(2);
-        medical.innerText = "$180.00";
+        document.getElementById("medical").innerText = "$180.00";
         totalDeduction.innerText = "$" + parseFloat(finalDeduction).toFixed(2);
 
         tableMonthly.innerText = "$" + parseFloat(monthIncome).toFixed(2) ;
         tableDeduction.innerText = totalDeduction.innerText;
         tableNet.innerText = "$" + parseFloat(netMonthly).toFixed(2);
 
-        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2)
+        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2);
+
+        currentBalance.innerText = "Current Balance: $" + parseFloat(netMonthly).toFixed(2);
     })
 }};
 
@@ -307,7 +309,7 @@ function setEqualHeight() {
     }
     console.log("after button:" + totalHeight);
     console.log(careerOptions.style.height);
-    careerOptions.style.height = totalHeight + 65 + "px";
+    careerOptions.style.height = totalHeight + 61 + "px";
     jobList.style.height = totalHeight - 100 + "px";
 }
 
