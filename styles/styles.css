@@ -306,29 +306,29 @@ td {
     align-items: center;
 }
 
-.check-table {
+#check-table {
     width: 100%;
     background-color: black;
 }
 
-.check-table tr{
+#check-table tr{
     background-color: white;
     text-align: center;
     height: 50px;
 }
 
-.check-table tr td input {
+#check-table tr td input {
     height: 32px;
     width: 80%;
     border: 0;
     padding: 16px;
 }
 
-.check-table tr td {
+#check-table tr td {
     padding: 0;
 }
 
-.check-table tr td:nth-child(2) {
+#check-table tr td:nth-child(2) {
     font-weight: bold;
 }
 

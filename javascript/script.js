@@ -185,6 +185,8 @@ for (let i = 0; i < displayedJobs.length; i++) {
         document.getElementById("house-pay").innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2);
 
         currentBalance.innerText = "Current Balance: $" + parseFloat(netMonthly).toFixed(2);
+
+        setEqualHeight()
     })
 }};
 
@@ -261,54 +263,62 @@ function sort(which, direction) {
 }
 
 let totalHeight = 0;
-console.log("before button:" + totalHeight)
-console.log("before button:" + totalHeight)
-const testButton = document.getElementById("test");
-testButton.addEventListener("click", function() {
-    for (let i = 0; i < careerTaxContent.children.length; i++) {
-        const element = careerTaxContent.children[i];
-        let height = element.offsetHeight;
-        console.log(element);
-        console.log(height);
-        totalHeight = totalHeight + height;
-        
-    }
-    console.log("after button:" + totalHeight);
-    console.log(careerOptions.style.height);
-    careerOptions.style.height = totalHeight + 65 + "px";
-    jobList.style.height = totalHeight - 100 + "px";
-});
-
 function setEqualHeight() {
     for (let i = 0; i < careerTaxContent.children.length; i++) {
         const element = careerTaxContent.children[i];
         let height = element.offsetHeight;
-        console.log(element);
-        console.log(height);
         totalHeight = totalHeight + height;
     }
-    console.log("after button:" + totalHeight);
-    console.log(careerOptions.style.height);
     careerOptions.style.height = totalHeight + 61 + "px";
     jobList.style.height = totalHeight - 100 + "px";
+    totalHeight = 0;
+}
+setEqualHeight()
+
+function addRow() {
+    const table = document.querySelector("#check-table tbody");
+    console.log(table.children);
+    let row;
+    row = table.insertRow(table.children.length)
+    for (let i = 0; i < 6; i++) {
+        if(i < 2) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<input type="text"></input>`;
+        } else if (i < 4) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<input type="number"></input>`;
+        } else if (i == 5) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<button>Delete</button>`;
+        } else {
+            row.insertCell(i);
+        }
+    }
 }
 
-setEqualHeight()
-// window.addEventListener("resize", setEqualHeight());
+const testButton = document.getElementById("test");
+testButton.addEventListener("click", function() {
+    const table = document.querySelector("#check-table tbody");
+    console.log(table.children);
+    let row;
+    row = table.insertRow(table.children.length)
+    for (let i = 0; i < 6; i++) {
+        if(i < 2) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<input type="text"></input>`
+        } else if (i < 4) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<input type="number"></input>`
+        } else if (i == 5) {
+            let cell = row.insertCell(i);
+            cell.innerHTML = `<button>Delete</button>`
+        } else {
+            row.insertCell(i);
+        }
+    }
+});
 
 
 
-
-// jobs.sort(function(a, b) {
-//     let nameA = a.work.toLowerCase();
-//     let nameB = b.work.toLowerCase();
-//     if (nameA < nameB) {
-//         return -1;
-//     } 
-//     if (nameA > nameB) {
-//         return 1
-//     }
-//     return 0;
-// })
 
 // calculator stuffs
