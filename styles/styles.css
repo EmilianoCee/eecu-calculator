@@ -237,9 +237,9 @@ td {
     display: none;
 }
 
-.job:nth-child(2n) {
+/* .job:nth-child(2n) {
     font-weight: bold;
-}
+} */
 
 .job-nav {
     display: flex;

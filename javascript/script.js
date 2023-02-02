@@ -1,30 +1,10 @@
-
-const jobTemplate = document.getElementById("job-template");
 const jobList = document.getElementById("job-list");
 
 const sortButtons = document.getElementsByClassName("job-sort")
 const sortTriangles = document.getElementsByClassName("triangle");
 
-const nameSort = document.getElementById("name-sort");
-const incomeSort = document.getElementById("income-sort");
-
 const displayedJobs = document.getElementsByClassName("job");
-const jobTitle = document.getElementById("info-job");
-const grossAnnual = document.getElementById("gross-annual");
-const grossMonth = document.getElementById("gross-monthly");
-
-const federalTax = document.getElementById("federal-tax");
-const stateTax = document.getElementById("state-tax");
-const socialSecurity = document.getElementById("social-security");
-const medicare = document.getElementById("medicare");
-const disability = document.getElementById("disability");
-const retirement = document.getElementById("retirement");
 const totalDeduction = document.getElementById("total-deduction");
-const housePayment = document.getElementById("house-pay");
-
-const tableMonthly = document.getElementById("table-monthly");
-const tableDeduction = document.getElementById("table-deductions");
-const tableNet = document.getElementById("table-net");
 
 const searchInput = document.getElementById("search");
 
@@ -112,7 +92,7 @@ function populateTemplates() {
     for (let i = 0; i < jobs.length; i++) {
         const element = jobs[i];
         // first child to access through document-fragment
-        const job = jobTemplate.content.cloneNode(true).children[0];
+        const job = document.getElementById("job-template").content.cloneNode(true).children[0];
         // target with querySelector due to getElementById errors
         const jobName = job.querySelector("[job-name]");
         const jobIncome = job.querySelector("[job-income]");
@@ -174,11 +154,11 @@ for (let i = 0; i < displayedJobs.length; i++) {
         let thisIncome = this.children[1].innerText;
         let launderedIncome = thisIncome.replace("$", "");
         launderedIncome = parseInt(launderedIncome);
-        jobTitle.innerText = this.children[0].innerText;
-        grossAnnual.innerText = "Gross Annual Income: " + thisIncome + ".00";
+        document.getElementById("info-job").innerText = this.children[0].innerText;
+        document.getElementById("gross-annual").innerText = "Gross Annual Income: " + thisIncome + ".00";
 
         let monthIncome = launderedIncome/12;
-        grossMonth.innerText = "Gross Monthly Income: " + "$" + parseFloat(monthIncome).toFixed(2);
+        document.getElementById("gross-monthly").innerText = "Gross Monthly Income: " + "$" + parseFloat(monthIncome).toFixed(2);
 
         let fed = monthIncome*0.12;
         let state = monthIncome*0.07;
@@ -189,20 +169,20 @@ for (let i = 0; i < displayedJobs.length; i++) {
         let finalDeduction = fed + state + social + medi + dis + ret + 180;
         let netMonthly = monthIncome - finalDeduction;
 
-        federalTax.innerText = "$" + parseFloat(fed).toFixed(2);
-        stateTax.innerText = "$" + parseFloat(state).toFixed(2);
-        socialSecurity.innerText = "$" + parseFloat(social).toFixed(2);
-        medicare.innerText = "$" +  parseFloat(medi).toFixed(2);
-        disability.innerText = "$" +  parseFloat(dis).toFixed(2);
-        retirement.innerText = "$" +  parseFloat(ret).toFixed(2);
+        document.getElementById("federal-tax").innerText = "$" + parseFloat(fed).toFixed(2);
+        document.getElementById("state-tax").innerText = "$" + parseFloat(state).toFixed(2);
+        document.getElementById("social-security").innerText = "$" + parseFloat(social).toFixed(2);
+        document.getElementById("medicare").innerText = "$" +  parseFloat(medi).toFixed(2);
+        document.getElementById("disability").innerText = "$" +  parseFloat(dis).toFixed(2);
+        document.getElementById("retirement").innerText = "$" +  parseFloat(ret).toFixed(2);
         document.getElementById("medical").innerText = "$180.00";
         totalDeduction.innerText = "$" + parseFloat(finalDeduction).toFixed(2);
 
-        tableMonthly.innerText = "$" + parseFloat(monthIncome).toFixed(2) ;
-        tableDeduction.innerText = totalDeduction.innerText;
-        tableNet.innerText = "$" + parseFloat(netMonthly).toFixed(2);
+        document.getElementById("table-monthly").innerText = "$" + parseFloat(monthIncome).toFixed(2) ;
+        document.getElementById("table-deductions").innerText = totalDeduction.innerText;
+        document.getElementById("table-net").innerText = "$" + parseFloat(netMonthly).toFixed(2);
 
-        housePayment.innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2);
+        document.getElementById("house-pay").innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2);
 
         currentBalance.innerText = "Current Balance: $" + parseFloat(netMonthly).toFixed(2);
     })
