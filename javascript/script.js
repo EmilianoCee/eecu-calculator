@@ -10,8 +10,10 @@ const searchInput = document.getElementById("search");
 
 const careerTaxContent = document.getElementById("career-taxes");
 const careerOptions = document.getElementById("career-options");
+const deductionNet = document.getElementById("table-net");
 
 const currentBalance = document.getElementById("current");
+const table = document.querySelector("#check-table tbody")
 
 const jobs = [
     {work: "Accountant", income: 55650}, 
@@ -158,7 +160,7 @@ for (let i = 0; i < displayedJobs.length; i++) {
         document.getElementById("gross-annual").innerText = "Gross Annual Income: " + thisIncome + ".00";
 
         let monthIncome = launderedIncome/12;
-        document.getElementById("gross-monthly").innerText = "Gross Monthly Income: " + "$" + parseFloat(monthIncome).toFixed(2);
+        document.getElementById("gross-monthly").innerText = "Gross Monthly Income: " + "$" + monthIncome.toFixed(2);
 
         let fed = monthIncome*0.12;
         let state = monthIncome*0.07;
@@ -169,24 +171,25 @@ for (let i = 0; i < displayedJobs.length; i++) {
         let finalDeduction = fed + state + social + medi + dis + ret + 180;
         let netMonthly = monthIncome - finalDeduction;
 
-        document.getElementById("federal-tax").innerText = "$" + parseFloat(fed).toFixed(2);
-        document.getElementById("state-tax").innerText = "$" + parseFloat(state).toFixed(2);
-        document.getElementById("social-security").innerText = "$" + parseFloat(social).toFixed(2);
-        document.getElementById("medicare").innerText = "$" +  parseFloat(medi).toFixed(2);
-        document.getElementById("disability").innerText = "$" +  parseFloat(dis).toFixed(2);
-        document.getElementById("retirement").innerText = "$" +  parseFloat(ret).toFixed(2);
+        document.getElementById("federal-tax").innerText = "$" + fed.toFixed(2);
+        document.getElementById("state-tax").innerText = "$" + state.toFixed(2);
+        document.getElementById("social-security").innerText = "$" + social.toFixed(2);
+        document.getElementById("medicare").innerText = "$" +  medi.toFixed(2);
+        document.getElementById("disability").innerText = "$" +  dis.toFixed(2);
+        document.getElementById("retirement").innerText = "$" +  ret.toFixed(2);
         document.getElementById("medical").innerText = "$180.00";
-        totalDeduction.innerText = "$" + parseFloat(finalDeduction).toFixed(2);
+        totalDeduction.innerText = "$" + finalDeduction.toFixed(2);
 
-        document.getElementById("table-monthly").innerText = "$" + parseFloat(monthIncome).toFixed(2) ;
+        document.getElementById("table-monthly").innerText = "$" + monthIncome.toFixed(2) ;
         document.getElementById("table-deductions").innerText = totalDeduction.innerText;
-        document.getElementById("table-net").innerText = "$" + parseFloat(netMonthly).toFixed(2);
+        deductionNet.innerText = "$" + netMonthly.toFixed(2);
 
-        document.getElementById("house-pay").innerText = "$" + parseFloat(monthIncome).toFixed(2) + " x 33% = " + "$" + parseFloat(monthIncome*0.33).toFixed(2);
+        document.getElementById("house-pay").innerText = "$" + monthIncome.toFixed(2) + " x 33% = " + "$" + (monthIncome*0.33).toFixed(2);
 
-        currentBalance.innerText = "Current Balance: $" + parseFloat(netMonthly).toFixed(2);
+        table.children[1].children[3].innerText = netMonthly.toFixed(2);
 
-        setEqualHeight()
+        setEqualHeight();
+        topRowCheck();
     })
 }};
 
@@ -274,9 +277,9 @@ function setEqualHeight() {
     totalHeight = 0;
 }
 setEqualHeight()
+document.getElementById("add-row").addEventListener("click", addRow );
 
 function addRow() {
-    const table = document.querySelector("#check-table tbody");
     console.log(table.children);
     let row;
     row = table.insertRow(table.children.length)
@@ -289,36 +292,35 @@ function addRow() {
             cell.innerHTML = `<input type="number"></input>`;
         } else if (i == 5) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<button>Delete</button>`;
+            cell.innerHTML = `<button class="remove">Remove</button>`;
         } else {
             row.insertCell(i);
         }
     }
 }
 
+function topRowCheck() {
+    table.children[1].children[1].innerText = "Paycheck"
+    table.children[1].children[4].innerText = "0"
+
+    table.children[1].children[4].innerText = table.children[1].children[3].innerText - table.children[1].children[2].innerText;
+
+    currentBalance.innerText = "Current Balance: $" + table.children[1].children[4].innerText;
+}
+
 const testButton = document.getElementById("test");
 testButton.addEventListener("click", function() {
-    const table = document.querySelector("#check-table tbody");
-    console.log(table.children);
-    let row;
-    row = table.insertRow(table.children.length)
-    for (let i = 0; i < 6; i++) {
-        if(i < 2) {
-            let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="text"></input>`
-        } else if (i < 4) {
-            let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="number"></input>`
-        } else if (i == 5) {
-            let cell = row.insertCell(i);
-            cell.innerHTML = `<button>Delete</button>`
-        } else {
-            row.insertCell(i);
-        }
-    }
+    
 });
 
 
 
+for (let i = 0; i < document.getElementsByClassName("remove").length; i++) {
+    const element = document.getElementsByClassName("remove")[i];
+    element.addEventListener("click", function() {
+        console.log(table)
+        table.deleteRow(-1);
+    })
+}
 
 // calculator stuffs

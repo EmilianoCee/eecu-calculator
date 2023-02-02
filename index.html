@@ -201,10 +201,10 @@
                 <div class="table-top">
                     <h2>Check Register</h2>
                     <div id="current">Current Balance:</div>
-                    <button class="add-row">Add Row</button>
+                    <button id="add-row">Add Row</button>
                     <button id="test">TEST BUTTON</button>
                 </div>
-                <form action="">
+                <form action="" onsubmit=";return false">
                     <table class="shadow" id="check-table">
                         <tr class="top-row">
                             <td>Number or Code</td>
@@ -216,11 +216,11 @@
                         </tr>
                         <tr>
                             <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="number"></td>
-                            <td><input type="number"></td>
                             <td></td>
-                            <td><button>Delete</button></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td><input type="text"></td>
@@ -228,7 +228,7 @@
                             <td><input type="number"></td>
                             <td><input type="number"></td>
                             <td></td>
-                            <td><button>Delete</button></td>
+                            <td><button class="remove">Remove</button></td>
                         </tr>
                         <tr>
                             <td><input type="text"></td>
@@ -236,7 +236,7 @@
                             <td><input type="number"></td>
                             <td><input type="number"></td>
                             <td></td>
-                            <td><button>-</button></td>
+                            <td><button class="remove">Remove</button></td>
                         </tr>
                     </table>
                 </form>

@@ -322,14 +322,12 @@ td {
     width: 80%;
     border: 0;
     padding: 16px;
+    text-align: center;
 }
 
 #check-table tr td {
     padding: 0;
-}
-
-#check-table tr td:nth-child(2) {
-    font-weight: bold;
+    text-align: center;
 }
 
 .top-row {
@@ -363,8 +361,4 @@ td {
     border-right: 5px solid transparent;
     border-bottom: 9px solid black;
     border-radius: 0px;
-}
-
-.cross {
-    color: #03498b;
 }
