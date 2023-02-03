@@ -190,6 +190,10 @@ for (let i = 0; i < displayedJobs.length; i++) {
 
         setEqualHeight();
         topRowCheck();
+
+        for (let n = 0; n < table.children.length; n++) {
+            const element = array[n];
+        }
     })
 }};
 
@@ -276,11 +280,13 @@ function setEqualHeight() {
     jobList.style.height = totalHeight - 100 + "px";
     totalHeight = 0;
 }
+
 setEqualHeight()
 document.getElementById("add-row").addEventListener("click", addRow );
 
+let removeButton = document.getElementsByClassName("remove");
+
 function addRow() {
-    console.log(table.children);
     let row;
     row = table.insertRow(table.children.length)
     for (let i = 0; i < 6; i++) {
@@ -289,14 +295,19 @@ function addRow() {
             cell.innerHTML = `<input type="text"></input>`;
         } else if (i < 4) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="number"></input>`;
+            cell.innerHTML = `<input type="number" onblur="withdraw(this)"></input>`;
         } else if (i == 5) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<button class="remove">Remove</button>`;
+            cell.innerHTML = `<button class="remove" onclick="removeRow(this)">Remove</button>`;
         } else {
             row.insertCell(i);
         }
     }
+    // for (let i = 0; i < removeButton.length; i++) {
+    //     removeButton[i].addEventListener("click", function() {
+    //         removeRow(this);
+    //     })
+    // }
 }
 
 function topRowCheck() {
@@ -308,19 +319,25 @@ function topRowCheck() {
     currentBalance.innerText = "Current Balance: $" + table.children[1].children[4].innerText;
 }
 
+function removeRow(el) {
+    el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
+}
+
+function withdraw(el) {
+    let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
+    console.log(table.children[table.children.length-1].children[4].innerText)
+    if (el.parentNode.parentNode.children[3].children[0] == el) {
+        el.parentNode.parentNode.children[4].innerText = previousBalance + el.valueAsNumber;
+    } else {
+        el.parentNode.parentNode.children[4].innerText = previousBalance - el.valueAsNumber;
+    }
+    
+}
+
 const testButton = document.getElementById("test");
 testButton.addEventListener("click", function() {
-    
+    console.log(table.children)
 });
 
-
-
-for (let i = 0; i < document.getElementsByClassName("remove").length; i++) {
-    const element = document.getElementsByClassName("remove")[i];
-    element.addEventListener("click", function() {
-        console.log(table)
-        table.deleteRow(-1);
-    })
-}
 
 // calculator stuffs
