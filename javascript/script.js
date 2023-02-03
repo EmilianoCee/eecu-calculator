@@ -10,7 +10,6 @@ const searchInput = document.getElementById("search");
 
 const careerTaxContent = document.getElementById("career-taxes");
 const careerOptions = document.getElementById("career-options");
-const deductionNet = document.getElementById("table-net");
 
 const currentBalance = document.getElementById("current");
 const table = document.querySelector("#check-table tbody")
@@ -182,7 +181,7 @@ for (let i = 0; i < displayedJobs.length; i++) {
 
         document.getElementById("table-monthly").innerText = "$" + monthIncome.toFixed(2) ;
         document.getElementById("table-deductions").innerText = totalDeduction.innerText;
-        deductionNet.innerText = "$" + netMonthly.toFixed(2);
+        document.getElementById("table-net").innerText = "$" + netMonthly.toFixed(2);
 
         document.getElementById("house-pay").innerText = "$" + monthIncome.toFixed(2) + " x 33% = " + "$" + (monthIncome*0.33).toFixed(2);
 
@@ -191,9 +190,12 @@ for (let i = 0; i < displayedJobs.length; i++) {
         setEqualHeight();
         topRowCheck();
 
-        for (let n = 0; n < table.children.length; n++) {
-            const element = array[n];
+        // removes all current table rows that are not the first 2
+        for (let n = 2; n < table.children.length;) {
+            table.deleteRow(n);
         }
+        addRow();
+        table.children[2].children[5].innerHTML = ""
     })
 }};
 
@@ -282,7 +284,13 @@ function setEqualHeight() {
 }
 
 setEqualHeight()
-document.getElementById("add-row").addEventListener("click", addRow );
+window.addEventListener("resize", setEqualHeight);
+
+document.getElementById("add-row").addEventListener("click", function() {
+    if (table) {
+        
+    }
+});
 
 let removeButton = document.getElementsByClassName("remove");
 
@@ -303,11 +311,6 @@ function addRow() {
             row.insertCell(i);
         }
     }
-    // for (let i = 0; i < removeButton.length; i++) {
-    //     removeButton[i].addEventListener("click", function() {
-    //         removeRow(this);
-    //     })
-    // }
 }
 
 function topRowCheck() {
@@ -320,24 +323,53 @@ function topRowCheck() {
 }
 
 function removeRow(el) {
+    
+    let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
     el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
+
+    currentBalance.innerText = "Current Balance: $" + previousBalance;
 }
 
 function withdraw(el) {
     let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
-    console.log(table.children[table.children.length-1].children[4].innerText)
-    if (el.parentNode.parentNode.children[3].children[0] == el) {
-        el.parentNode.parentNode.children[4].innerText = previousBalance + el.valueAsNumber;
+    let newBalance = el.parentNode.parentNode.children[4];
+    let deposit = el.parentNode.parentNode.children[3];
+
+    if (deposit.children[0] == el) {
+        newBalance.innerText = previousBalance + el.valueAsNumber;
+        if (newBalance.innerText == "NaN") {
+            tableError()
+        } else {
+            el.parentNode.parentNode.children[2].innerHTML = "";
+            currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
+            if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
+                addRow();
+            }
+        }
     } else {
-        el.parentNode.parentNode.children[4].innerText = previousBalance - el.valueAsNumber;
-    }
+        newBalance.innerText = previousBalance - el.valueAsNumber;
+        if (newBalance.innerText == "NaN") {
+            tableError()
+        } else {
+            deposit.innerHTML = "";
+            currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
+            if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
+                addRow();
+            }
+        }
+    };
+    
+    
     
 }
 
 const testButton = document.getElementById("test");
 testButton.addEventListener("click", function() {
-    console.log(table.children)
+    console.log(23)
 });
 
+function tableError() {
+    currentBalance.innerText = "ENTER VALID NUMBER" 
+}
 
 // calculator stuffs

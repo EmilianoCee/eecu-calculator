@@ -309,6 +309,8 @@ td {
 #check-table {
     width: 100%;
     background-color: black;
+    /* overflow-y: auto;
+    max-height: 50vh; */
 }
 
 #check-table tr{
