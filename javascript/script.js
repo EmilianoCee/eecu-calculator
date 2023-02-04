@@ -6,8 +6,6 @@ const sortTriangles = document.getElementsByClassName("triangle");
 const displayedJobs = document.getElementsByClassName("job");
 const totalDeduction = document.getElementById("total-deduction");
 
-const searchInput = document.getElementById("search");
-
 const careerTaxContent = document.getElementById("career-taxes");
 const careerOptions = document.getElementById("career-options");
 
@@ -336,7 +334,7 @@ function withdraw(el) {
     let deposit = el.parentNode.parentNode.children[3];
 
     if (deposit.children[0] == el) {
-        newBalance.innerText = previousBalance + el.valueAsNumber;
+        newBalance.innerText = (previousBalance + el.valueAsNumber).toFixed(2);
         if (newBalance.innerText == "NaN") {
             tableError()
         } else {
@@ -347,9 +345,9 @@ function withdraw(el) {
             }
         }
     } else {
-        newBalance.innerText = previousBalance - el.valueAsNumber;
+        newBalance.innerText = (previousBalance - el.valueAsNumber).toFixed(2);
         if (newBalance.innerText == "NaN") {
-            tableError()
+            tableError();
         } else {
             deposit.innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
@@ -357,11 +355,7 @@ function withdraw(el) {
                 addRow();
             }
         }
-    };
-    
-    
-    
-}
+    }};
 
 const testButton = document.getElementById("test");
 testButton.addEventListener("click", function() {
@@ -372,4 +366,14 @@ function tableError() {
     currentBalance.innerText = "ENTER VALID NUMBER" 
 }
 
-// calculator stuffs
+// search bar
+const searchBar = document.getElementById("search");
+searchBar.addEventListener("input", function(e) {
+    const value = e.target.value.toLowerCase();
+
+    for (let i = 0; i < displayedJobs.length; i++) {
+        const element = displayedJobs[i];
+        const isVisible = element.innerText.toLowerCase().includes(value);
+        element.classList.toggle("hide", !isVisible);
+    }    
+})
