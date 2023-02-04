@@ -284,14 +284,6 @@ function setEqualHeight() {
 setEqualHeight()
 window.addEventListener("resize", setEqualHeight);
 
-document.getElementById("add-row").addEventListener("click", function() {
-    if (table) {
-        
-    }
-});
-
-let removeButton = document.getElementsByClassName("remove");
-
 function addRow() {
     let row;
     row = table.insertRow(table.children.length)
@@ -357,10 +349,10 @@ function withdraw(el) {
         }
     }};
 
-const testButton = document.getElementById("test");
-testButton.addEventListener("click", function() {
-    console.log(23)
-});
+// const testButton = document.getElementById("test");
+// testButton.addEventListener("click", function() {
+//     console.log(23)
+// });
 
 function tableError() {
     currentBalance.innerText = "ENTER VALID NUMBER" 

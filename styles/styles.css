@@ -82,105 +82,6 @@ h2 {
     flex-direction: column;
 }
 
-.calculations {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* display: none; */
-}
-
-.calc-header {
-    display: flex;
-    width: 100%;
-}
-
-.calculator {
-    aspect-ratio: 2 / 3;
-    background-color: rgb(233,231,236);
-    width: 50%;
-    margin: 0 32px 32px 32px;
-    border-radius: 32px;
-    border: 1px solid black;
-}
-
-.screen{
-    background-color: rgb(233,231,236);
-    color: rgb(0, 0, 0);
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
-}
-
-.screen p {
-    font-size: 2rem;
-    font-weight: 600;
-    width: 80%;
-    text-align: end;
-    background-color: gray;
-    border-radius: 16px;
-    border: black solid 1px;
-    box-shadow: -2px -2px 2px rgba(0, 0, 0, 0.25);
-    margin: 0;
-    padding: 16px;
-}
-
-.numpad {
-    width: 100%;
-    background-color: rgb(233,231,236);
-    height: 80%;
-    border-radius: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.calc-row {
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
-    height: 17%;
-    justify-content: space-around;
-}
-
-.calc-button {
-    width: 22%;
-    background-color: rgb(233,231,236);
-    color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 16px;
-    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
-    font-weight: 500;
-    font-size: 24px;
-}
-
-.calc-button:hover {
-    margin-top: 2px;
-    margin-left: 1px;
-    background-color: rgb(223, 223, 223);
-    opacity: 95%;
-}
-
-/* .calc-row:first-child .calc-button:not(:last-child) {
-    background-color: rgb(160,160,160);
-    color: black;
-}
-
-.calc-button:last-child {
-    background-color: rgb(246,154,6);
-} */
-
-.calc-row:last-child .calc-button:first-child {
-    width: 45%;
-}
-
 .receipt {
     width: 100%;
 }
@@ -299,14 +200,18 @@ td {
 }
 
 .check-section h2{
-    width: 50%;
+    width: 25%;
 }
 
 .table-top {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+}
+
+#current {
+    margin-right: 32px;
 }
 
 #check-table {
