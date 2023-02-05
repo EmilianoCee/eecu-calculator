@@ -91,12 +91,12 @@ h2 {
     padding-top: 16px;
 }
 
-#table-monthly {
-    text-align: end;
+.net-month :nth-child(3) {
+    text-align: center;
 }
 
-#table-deductions {
-    text-align: center;
+#table-monthly {
+    text-align: end;
 }
 
 td {
@@ -208,10 +208,23 @@ td {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #current {
-    margin-right: 32px;
+    width: 75%;
+}
+
+.button-end {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+#add-row {
+    margin-bottom: 16px;
+    padding: 8px;
+    display: none;
 }
 
 #check-table {
@@ -229,12 +242,11 @@ td {
     height: 32px;
     width: 80%;
     border: 0;
-    padding: 16px;
+    padding: 16px 5px;
     text-align: center;
 }
 
 #check-table tr td {
-    padding: 0;
     text-align: center;
 }
 
@@ -242,6 +254,22 @@ td {
     position: sticky;
     top: -16px;
     box-shadow: inset 0 0 0 0.25px black;
+}
+
+button {
+    cursor: pointer;
+    background-color: #f8fcff;
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, .1);
+    border: 1px solid black;
+}
+
+button:hover {
+    background-color: #E8F3FC;
+}
+
+button:active {
+    margin: 4px 0 0 1px;
+    background-color: #d8e1e9;
 }
 
 .triangle {
@@ -271,4 +299,80 @@ td {
     border-right: 5px solid transparent;
     border-bottom: 9px solid black;
     border-radius: 0px;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .career {
+        flex-wrap: wrap;
+    }
+
+    .career-taxes {
+        width: 100%;
+        margin: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .career-options {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .household {
+        width: 40%;
+        order: -1;
+    }
+
+    .career-info {
+        width: 40%;
+        order: -2;
+    }
+
+    .tax-receipt {
+        width: 100%;
+    }
+
+    .check-section h2 {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 625px) { 
+    .career-info {
+        width: 100%;
+    }
+
+    .household {
+        width: 100%;
+        order: 0;
+    }
+
+    article {
+        margin: 25px 25px 0 25px;
+    }
+
+    section {
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 565px) {
+    article {
+        margin:0;
+    }
+
+    #job-list {
+        margin: 0 32px
+    }
+
+    section {
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
 }

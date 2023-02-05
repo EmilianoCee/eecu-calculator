@@ -10,7 +10,8 @@ const careerTaxContent = document.getElementById("career-taxes");
 const careerOptions = document.getElementById("career-options");
 
 const currentBalance = document.getElementById("current");
-const table = document.querySelector("#check-table tbody")
+const table = document.querySelector("#check-table tbody");
+const addButton = document.getElementById("add-row");
 
 const jobs = [
     {work: "Accountant", income: 55650}, 
@@ -277,7 +278,7 @@ function setEqualHeight() {
         totalHeight = totalHeight + height;
     }
     careerOptions.style.height = totalHeight + 61 + "px";
-    jobList.style.height = totalHeight - 100 + "px";
+    jobList.style.height = totalHeight - 115 + "px";
     totalHeight = 0;
 }
 
@@ -313,7 +314,10 @@ function topRowCheck() {
 }
 
 function removeRow(el) {
-    
+    if (table.children.length == 4 || el.parentNode.parentNode.rowIndex+1 == table.children.length) {
+        addButton.style.display = "block";
+    }
+
     let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
     el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
 
@@ -334,10 +338,11 @@ function withdraw(el) {
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
+                addButton.style.display = "none";
             }
         }
     } else {
-        newBalance.innerText = (previousBalance - el.valueAsNumber).toFixed(2);
+        newBalance.innerText = (previousBalance - Math.abs(el.valueAsNumber)).toFixed(2);
         if (newBalance.innerText == "NaN") {
             tableError();
         } else {
@@ -345,14 +350,15 @@ function withdraw(el) {
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
-            }
+                addButton.style.display = "none";
+            };
         }
     }};
 
-// const testButton = document.getElementById("test");
-// testButton.addEventListener("click", function() {
-//     console.log(23)
-// });
+addButton.addEventListener("click", function() {
+    addRow();
+    addButton.style.display = "none";
+});
 
 function tableError() {
     currentBalance.innerText = "ENTER VALID NUMBER" 
