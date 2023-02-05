@@ -194,7 +194,6 @@ for (let i = 0; i < displayedJobs.length; i++) {
             table.deleteRow(n);
         }
         addRow();
-        table.children[2].children[5].innerHTML = ""
     })
 }};
 
@@ -314,7 +313,7 @@ function topRowCheck() {
 }
 
 function removeRow(el) {
-    if (table.children.length == 4 || el.parentNode.parentNode.rowIndex+1 == table.children.length) {
+    if (table.children.length == 3 || el.parentNode.parentNode.rowIndex+1 == table.children.length) {
         addButton.style.display = "block";
     }
 
