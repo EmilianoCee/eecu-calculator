@@ -82,7 +82,7 @@ const jobs = [
     {work: "UPS / Fed Ex Driver", income: 68250},
     {work: "Veterinarian", income: 82950},
     {work: "Welder / Metal Specialist", income: 47250},
-    {work: "Wind Energy Technician", income: 56700},
+    {work: "Wind Energy Technician", income: 56700}
 ]
 
 populateTemplates();
@@ -277,7 +277,7 @@ function setEqualHeight() {
         totalHeight = totalHeight + height;
     }
     careerOptions.style.height = totalHeight + 61 + "px";
-    jobList.style.height = totalHeight - 115 + "px";
+    jobList.style.maxHeight = totalHeight - 115 + "px";
     totalHeight = 0;
 }
 
@@ -293,7 +293,7 @@ function addRow() {
             cell.innerHTML = `<input type="text"></input>`;
         } else if (i < 4) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="number" onblur="withdraw(this)"></input>`;
+            cell.innerHTML = `<input type="number" onblur="calculate(this)"></input>`;
         } else if (i == 5) {
             let cell = row.insertCell(i);
             cell.innerHTML = `<button class="remove" onclick="removeRow(this)">Remove</button>`;
@@ -323,7 +323,7 @@ function removeRow(el) {
     currentBalance.innerText = "Current Balance: $" + previousBalance;
 }
 
-function withdraw(el) {
+function calculate(el) {
     let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
     let newBalance = el.parentNode.parentNode.children[4];
     let deposit = el.parentNode.parentNode.children[3];
