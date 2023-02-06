@@ -293,7 +293,12 @@ function addRow() {
             cell.innerHTML = `<input type="text"></input>`;
         } else if (i < 4) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="number" onblur="calculate(this)"></input>`;
+            cell.innerHTML = `<input type="number" onblur="calculate(this)" ></input>`;
+            cell.addEventListener("keypress", function(e) {
+                if(e.key == "Enter") {
+                    calculate(cell.children[0]);
+                }
+            })
         } else if (i == 5) {
             let cell = row.insertCell(i);
             cell.innerHTML = `<button class="remove" onclick="removeRow(this)">Remove</button>`;
@@ -310,6 +315,7 @@ function topRowCheck() {
     table.children[1].children[4].innerText = table.children[1].children[3].innerText - table.children[1].children[2].innerText;
 
     currentBalance.innerText = "Current Balance: $" + table.children[1].children[4].innerText;
+    currentBalance.style.color = "black"
 }
 
 function removeRow(el) {
@@ -321,6 +327,8 @@ function removeRow(el) {
     el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
 
     currentBalance.innerText = "Current Balance: $" + previousBalance;
+    currentBalance.style.color = "black"
+    
 }
 
 function calculate(el) {
@@ -335,6 +343,7 @@ function calculate(el) {
         } else {
             el.parentNode.parentNode.children[2].innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
+            currentBalance.style.color = "black"
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
@@ -347,12 +356,14 @@ function calculate(el) {
         } else {
             deposit.innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
+            currentBalance.style.color = "black"
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
             };
         }
-    }};
+    }
+};
 
 addButton.addEventListener("click", function() {
     addRow();
@@ -360,7 +371,8 @@ addButton.addEventListener("click", function() {
 });
 
 function tableError() {
-    currentBalance.innerText = "ENTER VALID NUMBER" 
+    currentBalance.innerText = "ENTER VALID NUMBER"; 
+    currentBalance.style.color = "red"
 }
 
 // search bar

@@ -126,28 +126,28 @@
                         </table>
                         <table class="net-month">
                             <tr>
-                                <td id="table-monthly"></td>
-                                <td>-</td>
-                                <td id="table-deductions"></td>
-                                <td>=</td>
-                                <td id="table-net"></td>
-                            </tr>
-                            <tr>
                                 <td>Gross Monthly Income</td>
                                 <td>-</td>
                                 <td>Total Deductions</td>
                                 <td>=</td>
                                 <td>Net Monthly Income</td>
                             </tr>
+                            <tr>
+                                <td id="table-monthly"></td>
+                                <td>-</td>
+                                <td id="table-deductions"></td>
+                                <td>=</td>
+                                <td id="table-net"></td>
+                            </tr>
                         </table>
                     </div>
                 </section>
 
                 <section class="household shadow">
-                    <h2>Monthly House Payment</h2>
+                    <h2>Monthly Housing</h2>
                     <div class="house-calculation">
                         <p>Gross Monthly Income &#215; 33% (0.33) = <br>
-                        Maximum Monthly House Payment</p>
+                        Maximum Monthly Loan or Rent</p>
                         <p id="house-pay"></p>
                     </div>
                 </section>
@@ -161,26 +161,26 @@
                     <div id="current">Select a job from the provided list to begin with an initial paycheck.</div>
                     <div class="button-end"><button id="add-row">Add Row</button></div>
                 </div>
-                <form action="" onsubmit=";return false">
                     <table class="shadow" id="check-table">
-                        <tr class="top-row">
-                            <td>Number or Code</td>
-                            <td>Transaction Description</td>
-                            <td>Withdrawal (-$)</td>
-                            <td>Deposit (+$)</td>
-                            <td>Balance ($)</td>
-                            <td>Remove</td>
-                        </tr>
-                        <tr>
-                            <td><input type="text"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        <form action="" onsubmit="return false"></form>
+                            <tr class="top-row">
+                                <td>Number or Code</td>
+                                <td>Transaction Description</td>
+                                <td>Withdrawal (-$)</td>
+                                <td>Deposit (+$)</td>
+                                <td>Balance ($)</td>
+                                <td>Remove</td>
+                            </tr>
+                            <tr>
+                                <td><input type="text"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </form>
                     </table>
-                </form>
             </section>
         </article>
 </body>

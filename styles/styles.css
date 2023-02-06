@@ -6,7 +6,7 @@ body {
 }
 
 .hero {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,12 +91,12 @@ h2 {
     padding-top: 16px;
 }
 
-.net-month :nth-child(3) {
-    text-align: center;
+.net-month tr :nth-child(1) {
+    text-align: end;
 }
 
-#table-monthly {
-    text-align: end;
+.net-month :nth-child(3) {
+    text-align: center;
 }
 
 td {
@@ -328,7 +328,7 @@ button:active {
     }
 
     .career-info {
-        width: 40%;
+        width: 42%;
         order: -2;
     }
 
@@ -374,6 +374,8 @@ button:active {
     }
 }
 
-@media screen and (max-width: 500px) {
-
+@media screen and (max-width: 475px) {
+    section {
+        padding: 0;
+    }
 }
