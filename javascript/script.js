@@ -318,17 +318,64 @@ function topRowCheck() {
     currentBalance.style.color = "black"
 }
 
+
+function runThroughTable() {
+    let c;
+    let girth = table.children.length;
+    for (let i = 2; i < table.children.length; i++) {
+        if (table.children[i].children[2].children[0] == undefined) {
+            c = 3;
+            calculate(table.children[i].children[c].children[0])
+        } else {
+            c = 2;
+            calculate(table.children[i].children[c].children[0])
+        }
+    }
+    if (girth != table.children.length) {
+        table.deleteRow(table.children.length-1);
+    }
+}
+
+const test = document.getElementById("test");
+test.addEventListener("click", function() {
+    let lastRowBalance = table.children[table.children.length-1].children[4].innerHTML;
+    console.log(lastRowBalance)
+    console.log(lastRowBalance == "")
+})
+
 function removeRow(el) {
     if (table.children.length == 3 || el.parentNode.parentNode.rowIndex+1 == table.children.length) {
         addButton.style.display = "block";
     }
-
     let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
-    el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
+    let lastRowBalance = table.children[table.children.length-1].children[4].innerText;
+    // console.log(lastRowBalance);
 
-    currentBalance.innerText = "Current Balance: $" + previousBalance;
-    currentBalance.style.color = "black"
+    if (el.parentNode.parentNode.rowIndex+1 != table.children.length) {
+        el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
+        runThroughTable();
+        if (lastRowBalance == "NaN" || lastRowBalance == "") {
+            // console.log(table.children[table.children.length-2].children[4].innerText + "minus2")
+            currentBalance.innerText = "Current Balance: $" + table.children[table.children.length-2].children[4].innerText;
+        } else {
+            // console.log(lastRowBalance + "lastrow")
+            currentBalance.innerText = "Current Balance: $" + lastRowBalance;
+        }
+    } else {
+        el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
+        // console.log(previousBalance + "prev")
+        currentBalance.innerText = "Current Balance: $" + previousBalance;
+    }
+    currentBalance.style.color = "black";
     
+
+
+   
+
+    // console.log(lastBalance);
+
+    // currentBalance.innerText = "Current Balance: $" + lastBalance;
+    // currentBalance.style.color = "black";
 }
 
 function calculate(el) {
