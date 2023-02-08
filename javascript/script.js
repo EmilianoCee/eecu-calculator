@@ -79,7 +79,7 @@ const jobs = [
     {work: "Social Worker ", income: 50400},
     {work: "Solar Energy Tech.", income:53550},
     {work: "Teacher", income: 52500},
-    {work: "UPS / Fed Ex Driver", income: 68250},
+    {work: "UPS / FedEx Driver", income: 68250},
     {work: "Veterinarian", income: 82950},
     {work: "Welder / Metal Specialist", income: 47250},
     {work: "Wind Energy Technician", income: 56700}
@@ -318,17 +318,23 @@ function topRowCheck() {
     currentBalance.style.color = "black"
 }
 
-
 function runThroughTable() {
-    let c;
+    let t;
+    let l;
     let girth = table.children.length;
-    for (let i = 2; i < table.children.length; i++) {
+    let lastRowBalance = table.children[table.children.length-1].children[4].innerText;
+    if (lastRowBalance == "NaN" || lastRowBalance == "") {
+        l = table.children.length-1;
+    } else {
+        l = table.children.length;
+    };
+    for (let i = 2; i < l; i++) {
         if (table.children[i].children[2].children[0] == undefined) {
-            c = 3;
-            calculate(table.children[i].children[c].children[0])
+            t = 3;
+            calculate(table.children[i].children[t].children[0])
         } else {
-            c = 2;
-            calculate(table.children[i].children[c].children[0])
+            t = 2;
+            calculate(table.children[i].children[t].children[0])
         }
     }
     if (girth != table.children.length) {
@@ -336,20 +342,12 @@ function runThroughTable() {
     }
 }
 
-const test = document.getElementById("test");
-test.addEventListener("click", function() {
-    let lastRowBalance = table.children[table.children.length-1].children[4].innerHTML;
-    console.log(lastRowBalance)
-    console.log(lastRowBalance == "")
-})
-
 function removeRow(el) {
     if (table.children.length == 3 || el.parentNode.parentNode.rowIndex+1 == table.children.length) {
         addButton.style.display = "block";
     }
     let previousBalance = parseFloat(el.parentNode.parentNode.parentNode.children[el.parentNode.parentNode.rowIndex-1].children[4].innerText);
     let lastRowBalance = table.children[table.children.length-1].children[4].innerText;
-    // console.log(lastRowBalance);
 
     if (el.parentNode.parentNode.rowIndex+1 != table.children.length) {
         el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
@@ -367,15 +365,6 @@ function removeRow(el) {
         currentBalance.innerText = "Current Balance: $" + previousBalance;
     }
     currentBalance.style.color = "black";
-    
-
-
-   
-
-    // console.log(lastBalance);
-
-    // currentBalance.innerText = "Current Balance: $" + lastBalance;
-    // currentBalance.style.color = "black";
 }
 
 function calculate(el) {
@@ -410,6 +399,8 @@ function calculate(el) {
             };
         }
     }
+
+    
 };
 
 addButton.addEventListener("click", function() {
@@ -418,7 +409,7 @@ addButton.addEventListener("click", function() {
 });
 
 function tableError() {
-    currentBalance.innerText = "ENTER VALID NUMBER"; 
+    currentBalance.innerText = "ENTER VALID WITHDRAWAL OR DEPOSIT AMOUNT"; 
     currentBalance.style.color = "red"
 }
 
@@ -433,3 +424,5 @@ searchBar.addEventListener("input", function(e) {
         element.classList.toggle("hide", !isVisible);
     }    
 })
+
+document.getElementById("redo").addEventListener("click", runThroughTable);

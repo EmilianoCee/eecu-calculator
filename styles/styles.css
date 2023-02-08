@@ -222,10 +222,14 @@ td {
     justify-content: flex-end;
 }
 
-#add-row {
+.button-end button {
     margin-bottom: 16px;
     padding: 8px;
+}
+
+#add-row {
     display: none;
+    margin-right: 16px;
 }
 
 #check-table {
