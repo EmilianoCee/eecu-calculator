@@ -395,7 +395,8 @@ button:active {
     }
 
     #job-list {
-        margin: 0 32px
+        margin: 0 32px;
+        border-bottom: 1px solid grey;
     }
 
     section {
