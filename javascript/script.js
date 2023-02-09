@@ -187,6 +187,7 @@ for (let i = 0; i < displayedJobs.length; i++) {
         table.children[1].children[3].innerText = netMonthly.toFixed(2);
 
         topRowCheck();
+        setEqualHeight();
 
         // removes all current table rows that are not the first 2
         for (let n = 2; n < table.children.length;) {
@@ -275,28 +276,26 @@ function setEqualHeight() {
         let height = element.offsetHeight;
         totalHeight = totalHeight + height;
     }
-    careerOptions.style.height = totalHeight + 61 + "px";
-    if (this.window.innerWidth < 951 && this.window.innerWidth > 800) {
-        jobList.style.maxHeight = totalHeight - 140 + "px";
+    
+    if (this.window.innerWidth < 475) {
+        careerOptions.style.height = 1050 + "px";
+        jobList.style.maxHeight = 825 + "px";
+    } else if (800 < this.window.innerWidth && this.window.innerWidth < 951) {
+        careerOptions.style.height = totalHeight + 61 + "px";
+        jobList.style.maxHeight = totalHeight - 125 + "px";
+    } else if (this.window.innerWidth < 800) {
+        careerOptions.style.height = 1050 + "px";
+        jobList.style.maxHeight = 850 + "px";
     } else {
+        careerOptions.style.height = totalHeight + 61 + "px";
         jobList.style.maxHeight = totalHeight - 115 + "px";
-    }
+    };
     totalHeight = 0;
 }
 
 setEqualHeight()
 window.addEventListener("resize", function() {
-    if (this.window.innerWidth > 565 ) {
-        setEqualHeight();
-        jobList.style.borderBottom = "none"
-    } else if(this.window.innerWidth < 475) {
-        careerOptions.style.height = 1050 + "px";
-        jobList.style.maxHeight = 825 + "px";
-    } else {
-        careerOptions.style.height = 1050 + "px";
-        jobList.style.maxHeight = 850 + "px";
-        jobList.style.borderBottom = "1px solid grey"
-    }
+    setEqualHeight();
 });
 
 function addRow() {
