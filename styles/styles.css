@@ -402,11 +402,24 @@ button:active {
     section {
         padding: 8px;
     }
+
+    .check-section h2 {
+        width: 100%;
+    }
+
+    #current {
+        width: 60%;
+        text-align: start;
+    }
+
+    .button-end {
+        width: 40%;
+    }
 }
 
 @media screen and (max-width: 475px) {
     section {
-        padding: 0;
+        padding: 4px;
     }
 
     .job-nav {
