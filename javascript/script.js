@@ -186,7 +186,6 @@ for (let i = 0; i < displayedJobs.length; i++) {
 
         table.children[1].children[3].innerText = netMonthly.toFixed(2);
 
-        setEqualHeight();
         topRowCheck();
 
         // removes all current table rows that are not the first 2
@@ -277,12 +276,28 @@ function setEqualHeight() {
         totalHeight = totalHeight + height;
     }
     careerOptions.style.height = totalHeight + 61 + "px";
-    jobList.style.maxHeight = totalHeight - 115 + "px";
+    if (this.window.innerWidth < 951 && this.window.innerWidth > 800) {
+        jobList.style.maxHeight = totalHeight - 140 + "px";
+    } else {
+        jobList.style.maxHeight = totalHeight - 115 + "px";
+    }
     totalHeight = 0;
 }
 
 setEqualHeight()
-window.addEventListener("resize", setEqualHeight);
+window.addEventListener("resize", function() {
+    if (this.window.innerWidth > 565 ) {
+        setEqualHeight();
+        jobList.style.borderBottom = "none"
+    } else if(this.window.innerWidth < 475) {
+        careerOptions.style.height = 1050 + "px";
+        jobList.style.maxHeight = 825 + "px";
+    } else {
+        careerOptions.style.height = 1050 + "px";
+        jobList.style.maxHeight = 850 + "px";
+        jobList.style.borderBottom = "1px solid grey"
+    }
+});
 
 function addRow() {
     let row;
@@ -353,15 +368,12 @@ function removeRow(el) {
         el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
         runThroughTable();
         if (lastRowBalance == "NaN" || lastRowBalance == "") {
-            // console.log(table.children[table.children.length-2].children[4].innerText + "minus2")
             currentBalance.innerText = "Current Balance: $" + table.children[table.children.length-2].children[4].innerText;
         } else {
-            // console.log(lastRowBalance + "lastrow")
             currentBalance.innerText = "Current Balance: $" + lastRowBalance;
         }
     } else {
         el.parentNode.parentNode.parentNode.deleteRow(el.parentNode.parentNode.rowIndex);
-        // console.log(previousBalance + "prev")
         currentBalance.innerText = "Current Balance: $" + previousBalance;
     }
     currentBalance.style.color = "black";

@@ -167,6 +167,7 @@ td {
     margin-right: 8px;
     border: 0;
     height: 100%;
+    width: 100%;
 }
 
 .searchbar input::-webkit-search-decoration {
@@ -201,7 +202,7 @@ td {
 }
 
 .check-section h2{
-    width: 25%;
+    width: 30%;
 }
 
 .table-top {
@@ -213,12 +214,12 @@ td {
 }
 
 #current {
-    width: 75%;
+    width: 35%;
 }
 
 .button-end {
     display: flex;
-    width: 100%;
+    width: 35%;
     justify-content: flex-end;
 }
 
@@ -273,7 +274,6 @@ button:hover {
 }
 
 button:active {
-    margin: 4px 0 0 1px;
     background-color: #d8e1e9;
 }
 
@@ -306,7 +306,15 @@ button:active {
     border-radius: 0px;
 }
 
+@media screen and (max-width: 950px) {
+    .searchbar {
+        width: 100%;
+    }
 
+    .job-sort {
+        padding-bottom: 8px;
+    }    
+}
 
 @media screen and (max-width: 800px) {
     .career {
@@ -342,6 +350,23 @@ button:active {
 
     .check-section h2 {
         width: 50%;
+    }
+
+    #current {
+        width: 50%;
+        text-align: end;
+    }
+
+    .button-end {
+        width: 100%;
+    }
+
+    .searchbar {
+        width: auto;
+    }
+
+    .job-sort {
+        padding-bottom: 0;
     }
 }
 
@@ -381,5 +406,17 @@ button:active {
 @media screen and (max-width: 475px) {
     section {
         padding: 0;
+    }
+
+    .job-nav {
+        padding: 8px 16px;
+    }
+
+    .searchbar {
+        width: 100%;
+    }
+
+    .job-sort {
+        padding-bottom: 8px;
     }
 }
