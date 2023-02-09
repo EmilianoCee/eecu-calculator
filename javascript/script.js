@@ -308,7 +308,7 @@ function addRow() {
             cell.innerHTML = `<input type="text"></input>`;
         } else if (i < 4) {
             let cell = row.insertCell(i);
-            cell.innerHTML = `<input type="number" onblur="calculate(this)" ></input>`;
+            cell.innerHTML = `<input type="number" onblur="calculate(this)" onchange="updateCheck(this)"></input>`;
             cell.addEventListener("keypress", function(e) {
                 if(e.key == "Enter") {
                     calculate(cell.children[0]);
@@ -393,10 +393,11 @@ function calculate(el) {
             el.parentNode.parentNode.children[2].innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
             currentBalance.style.color = "black";
+            el.style.border = "none"
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
-                el.style.border = "none"
+                // el.style.border = "none"
             }
         }
     } else {
@@ -408,19 +409,22 @@ function calculate(el) {
             deposit.innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
             currentBalance.style.color = "black";
+            el.style.border = "none"
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
-                el.style.border = "none"
+                // el.style.border = "none"
             };
         }
     }
-
-    
 };
 
-console.log(table.children[1].children[4])
-console.log(table.children.length)
+
+function updateCheck(el) {
+    if (table.children.length > el.parentNode.parentNode.rowIndex+1) {
+        runThroughTable();
+    }
+}
 
 addButton.addEventListener("click", function() {
     addRow();
