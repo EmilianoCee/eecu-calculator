@@ -27,6 +27,7 @@ const jobs = [
     {work: "CNC Manufacturing", income: 80850}, 
     {work: "Carpenter", income: 47250},
     {work: "Chef", income: 52500},
+    {work: "Chemist", income: 56700},
     {work: "Civil Engineering Technician", income:68250},
     {work: "Commercial Driver ", income: 51450},
     {work: "Computer Technician", income: 46200},
@@ -57,8 +58,8 @@ const jobs = [
     {work: "Lab Technician", income: 66150},
     {work: "Landscaper Horticulture", income: 48300},
     {work: "Lawyer", income: 86100},
-    {work: "Marketing / Sales Manager", income: 48800},
-    {work: "Media / Communications", income: 47150},
+    {work: "Marketing / Sales Manager", income: 58800},
+    {work: "Media / Communications", income: 45150},
     {work: "Medical Repair Tech.", income: 52500}, 
     {work: "Military", income: 55650},
     {work: "Nurse", income: 66150},
@@ -387,32 +388,39 @@ function calculate(el) {
         newBalance.innerText = (previousBalance + el.valueAsNumber).toFixed(2);
         if (newBalance.innerText == "NaN") {
             tableError()
+            el.style.border = "2px solid red"
         } else {
             el.parentNode.parentNode.children[2].innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
-            currentBalance.style.color = "black"
+            currentBalance.style.color = "black";
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
+                el.style.border = "none"
             }
         }
     } else {
         newBalance.innerText = (previousBalance - Math.abs(el.valueAsNumber)).toFixed(2);
         if (newBalance.innerText == "NaN") {
             tableError();
+            el.style.border = "2px solid red"
         } else {
             deposit.innerHTML = "";
             currentBalance.innerText = "Current Balance: $" + newBalance.innerText;
-            currentBalance.style.color = "black"
+            currentBalance.style.color = "black";
             if (table.children.length == el.parentNode.parentNode.rowIndex+1) {
                 addRow();
                 addButton.style.display = "none";
+                el.style.border = "none"
             };
         }
     }
 
     
 };
+
+console.log(table.children[1].children[4])
+console.log(table.children.length)
 
 addButton.addEventListener("click", function() {
     addRow();
